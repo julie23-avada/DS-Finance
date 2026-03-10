@@ -178,13 +178,13 @@
 <div id="loginScreen">
   <div class="login-box">
     <div class="icon">&#127968;</div>
-    <h1>Tai Chinh Gia Dinh</h1>
-    <p class="sub">Quan ly thu chi va tai san thong minh</p>
-    <input type="text" id="familyCode" placeholder="Nhap ma gia dinh..." autocomplete="off">
-    <button onclick="login()">Dang Nhap</button>
+    <h1>Tài Chính Gia Đình</h1>
+    <p class="sub">Quản lý thu chi và tài sản thông minh</p>
+    <input type="text" id="familyCode" placeholder="Nhập mã gia đình..." autocomplete="off">
+    <button onclick="login()">Đăng Nhập</button>
     <div class="login-hint">
-      Lan dau? Tu dat mot ma bat ky (vi du: "giadinhnguyen").<br>
-      Ca hai vo chong nhap cung ma nay de dung chung du lieu.
+      Lần đầu? Tự đặt một mã bất kỳ (ví dụ: "giadinhnguyen").<br>
+      Cả hai vợ chồng nhập cùng mã này để dùng chung dữ liệu.
     </div>
   </div>
 </div>
@@ -193,8 +193,8 @@
 <div id="appScreen">
   <div class="header">
     <div class="header-top">
-      <h2>&#127968; Tai Chinh Gia Dinh</h2>
-      <button class="btn-logout" onclick="logout()">Dang xuat</button>
+      <h2>&#127968; Tài Chính Gia Đình</h2>
+      <button class="btn-logout" onclick="logout()">Đăng xuất</button>
     </div>
     <div class="month-sel">
       <button onclick="chgMonth(-1)">&#9664;</button>
@@ -206,22 +206,22 @@
   <!-- TAB: DASHBOARD -->
   <div class="tab active" id="tabDash">
     <div class="nw-card">
-      <div class="label">Tong tai san rong</div>
-      <div class="amt" id="netWorth">0 d</div>
+      <div class="label">Tổng tài sản ròng</div>
+      <div class="amt" id="netWorth">0 đ</div>
       <div class="row">
-        <div class="col"><div class="label">Tai san</div><div class="v" id="totalAsset">0 d</div></div>
-        <div class="col"><div class="label">No</div><div class="v" id="totalDebt">0 d</div></div>
+        <div class="col"><div class="label">Tài sản</div><div class="v" id="totalAsset">0 đ</div></div>
+        <div class="col"><div class="label">Nợ</div><div class="v" id="totalDebt">0 đ</div></div>
       </div>
     </div>
     <div class="owner-tabs" id="dashOwnerTabs">
-      <button class="owner-tab active" onclick="setDashOwner('all',this)">Tat ca</button>
+      <button class="owner-tab active" onclick="setDashOwner('all',this)">Tất cả</button>
       <button class="owner-tab" onclick="setDashOwner('shared',this)">Chung</button>
-      <button class="owner-tab" onclick="setDashOwner('wife',this)">Vo</button>
-      <button class="owner-tab" onclick="setDashOwner('husband',this)">Chong</button>
+      <button class="owner-tab" onclick="setDashOwner('wife',this)">Vợ</button>
+      <button class="owner-tab" onclick="setDashOwner('husband',this)">Chồng</button>
     </div>
     <div class="sum-grid" id="sumGrid"></div>
     <div class="card">
-      <div class="card-t">Thu chi thang nay</div>
+      <div class="card-t">Thu chi tháng này</div>
       <div style="display:flex;justify-content:space-between;margin-bottom:8px">
         <span style="color:var(--ok);font-weight:600;font-size:14px" id="dashIncome">+0 d</span>
         <span style="color:var(--err);font-weight:600;font-size:14px" id="dashExpense">-0 d</span>
@@ -233,71 +233,71 @@
   <!-- TAB: ACCOUNTS -->
   <div class="tab" id="tabAcc">
     <div class="owner-tabs" id="accOwnerTabs">
-      <button class="owner-tab active" onclick="setAccOwner('all',this)">Tat ca</button>
+      <button class="owner-tab active" onclick="setAccOwner('all',this)">Tất cả</button>
       <button class="owner-tab" onclick="setAccOwner('shared',this)">Chung</button>
-      <button class="owner-tab" onclick="setAccOwner('wife',this)">Vo</button>
-      <button class="owner-tab" onclick="setAccOwner('husband',this)">Chong</button>
+      <button class="owner-tab" onclick="setAccOwner('wife',this)">Vợ</button>
+      <button class="owner-tab" onclick="setAccOwner('husband',this)">Chồng</button>
     </div>
     <div class="flt-row" id="accTypeFlt">
-      <button class="flt-btn active" onclick="setAccType('all',this)">Tat ca</button>
-      <button class="flt-btn" onclick="setAccType('bank',this)">Ngan hang</button>
-      <button class="flt-btn" onclick="setAccType('credit',this)">The tin dung</button>
-      <button class="flt-btn" onclick="setAccType('invest',this)">Dau tu</button>
+      <button class="flt-btn active" onclick="setAccType('all',this)">Tất cả</button>
+      <button class="flt-btn" onclick="setAccType('bank',this)">Ngân hàng</button>
+      <button class="flt-btn" onclick="setAccType('credit',this)">Thẻ tín dụng</button>
+      <button class="flt-btn" onclick="setAccType('invest',this)">Đầu tư</button>
       <button class="flt-btn" onclick="setAccType('lend',this)">Cho vay</button>
-      <button class="flt-btn" onclick="setAccType('borrow',this)">No vay</button>
+      <button class="flt-btn" onclick="setAccType('borrow',this)">Nợ vay</button>
     </div>
     <div class="card"><div id="accList"></div></div>
-    <button class="btn" onclick="openAccModal()" style="margin-top:8px">+ Them tai khoan</button>
+    <button class="btn" onclick="openAccModal()" style="margin-top:8px">+ Thêm tài khoản</button>
   </div>
 
   <!-- TAB: ADD TX -->
   <div class="tab" id="tabAdd">
     <div class="card">
       <div class="type-tog">
-        <button class="t-btn a-exp" id="btnExp" onclick="setTxType('expense')">Chi tieu</button>
-        <button class="t-btn" id="btnInc" onclick="setTxType('income')">Thu nhap</button>
+        <button class="t-btn a-exp" id="btnExp" onclick="setTxType('expense')">Chi tiêu</button>
+        <button class="t-btn" id="btnInc" onclick="setTxType('income')">Thu nhập</button>
       </div>
       <div class="form-row">
-        <div class="fg"><label>So tien (VND)</label><input type="number" id="txAmt" placeholder="500000" inputmode="numeric"></div>
-        <div class="fg"><label>Danh muc</label><select id="txCat"></select></div>
+        <div class="fg"><label>Số tiền (VNĐ)</label><input type="number" id="txAmt" placeholder="500000" inputmode="numeric"></div>
+        <div class="fg"><label>Danh mục</label><select id="txCat"></select></div>
       </div>
       <div class="form-row">
-        <div class="fg"><label>Tai khoan</label><select id="txAcc"></select></div>
-        <div class="fg"><label>Nguoi</label><select id="txPerson"><option value="wife">Vo</option><option value="husband">Chong</option></select></div>
+        <div class="fg"><label>Tài khoản</label><select id="txAcc"></select></div>
+        <div class="fg"><label>Người</label><select id="txPerson"><option value="wife">Vợ</option><option value="husband">Chồng</option></select></div>
       </div>
-      <div class="fg"><label>Ngay</label><input type="date" id="txDate"></div>
-      <div class="fg"><label>Ghi chu</label><textarea id="txNote" placeholder="Vi du: Di cho buoi sang"></textarea></div>
-      <button class="btn" onclick="addTx()">Them giao dich</button>
+      <div class="fg"><label>Ngày</label><input type="date" id="txDate"></div>
+      <div class="fg"><label>Ghi chú</label><textarea id="txNote" placeholder="Ví dụ: Đi chợ buổi sáng"></textarea></div>
+      <button class="btn" onclick="addTx()">Thêm giao dịch</button>
     </div>
   </div>
 
   <!-- TAB: BUDGET & GOALS -->
   <div class="tab" id="tabBudget">
     <div class="card">
-      <div class="card-t">Dat ngan sach thang nay</div>
+      <div class="card-t">Đặt ngân sách tháng này</div>
       <div class="bud-input-row">
         <select id="budCat"></select>
-        <input type="number" id="budAmt" placeholder="So tien" inputmode="numeric">
-        <button class="btn-sm" onclick="setBudget()">Luu</button>
+        <input type="number" id="budAmt" placeholder="Số tiền" inputmode="numeric">
+        <button class="btn-sm" onclick="setBudget()">Lưu</button>
       </div>
     </div>
     <div class="card">
-      <div class="card-t">Theo doi ngan sach</div>
+      <div class="card-t">Theo dõi ngân sách</div>
       <div id="budList"></div>
     </div>
     <div class="card">
-      <div class="card-t">Muc tieu tiet kiem</div>
+      <div class="card-t">Mục tiêu tiết kiệm</div>
       <div id="goalList"></div>
-      <button class="btn" onclick="openGoalModal()" style="margin-top:8px">+ Them muc tieu</button>
+      <button class="btn" onclick="openGoalModal()" style="margin-top:8px">+ Thêm mục tiêu</button>
     </div>
   </div>
 
   <!-- TAB: HISTORY -->
   <div class="tab" id="tabHistory">
     <div class="flt-row">
-      <button class="flt-btn active" onclick="setTxFlt('all',this)">Tat ca</button>
-      <button class="flt-btn" onclick="setTxFlt('expense',this)">Chi tieu</button>
-      <button class="flt-btn" onclick="setTxFlt('income',this)">Thu nhap</button>
+      <button class="flt-btn active" onclick="setTxFlt('all',this)">Tất cả</button>
+      <button class="flt-btn" onclick="setTxFlt('expense',this)">Chi tiêu</button>
+      <button class="flt-btn" onclick="setTxFlt('income',this)">Thu nhập</button>
     </div>
     <div class="card"><div id="txList"></div></div>
   </div>
@@ -305,93 +305,93 @@
   <!-- TAB: STATS -->
   <div class="tab" id="tabStats">
     <div class="card">
-      <div class="card-t">Chi tieu theo danh muc (thang nay)</div>
+      <div class="card-t">Chi tiêu theo danh mục (tháng này)</div>
       <div id="catStats"></div>
     </div>
     <div class="card">
-      <div class="card-t">Tong ket theo nam</div>
+      <div class="card-t">Tổng kết theo năm</div>
       <div id="yrSummary" class="yr-grid"></div>
     </div>
   </div>
 
   <!-- BOTTOM NAV -->
   <div class="bnav">
-    <button class="nav-i active" onclick="go('tabDash',this)"><span class="ni">&#128200;</span>Tong quan</button>
-    <button class="nav-i" onclick="go('tabAcc',this)"><span class="ni">&#127974;</span>Tai khoan</button>
-    <button class="nav-i" onclick="go('tabAdd',this)"><span class="ni">&#10133;</span>Ghi chep</button>
-    <button class="nav-i" onclick="go('tabBudget',this)"><span class="ni">&#127919;</span>Ngan sach</button>
-    <button class="nav-i" onclick="go('tabHistory',this)"><span class="ni">&#128196;</span>Lich su</button>
-    <button class="nav-i" onclick="go('tabStats',this)"><span class="ni">&#128202;</span>Thong ke</button>
+    <button class="nav-i active" onclick="go('tabDash',this)"><span class="ni">&#128200;</span>Tổng quan</button>
+    <button class="nav-i" onclick="go('tabAcc',this)"><span class="ni">&#127974;</span>Tài khoản</button>
+    <button class="nav-i" onclick="go('tabAdd',this)"><span class="ni">&#10133;</span>Ghi chép</button>
+    <button class="nav-i" onclick="go('tabBudget',this)"><span class="ni">&#127919;</span>Ngân sách</button>
+    <button class="nav-i" onclick="go('tabHistory',this)"><span class="ni">&#128196;</span>Lịch sử</button>
+    <button class="nav-i" onclick="go('tabStats',this)"><span class="ni">&#128202;</span>Thống kê</button>
   </div>
 </div>
 
 <!-- MODAL: ACCOUNT -->
 <div class="modal" id="accModal">
   <div class="modal-c">
-    <div class="modal-h"><h3 id="accModalTitle">Them tai khoan</h3><button class="modal-x" onclick="closeAccModal()">&times;</button></div>
-    <div class="fg"><label>Ten tai khoan</label><input type="text" id="accName" placeholder="Vi du: VCB Luong Vo"></div>
+    <div class="modal-h"><h3 id="accModalTitle">Thêm tài khoản</h3><button class="modal-x" onclick="closeAccModal()">&times;</button></div>
+    <div class="fg"><label>Tên tài khoản</label><input type="text" id="accName" placeholder="Ví dụ: VCB Lương Vợ"></div>
     <div class="form-row">
-      <div class="fg"><label>Loai</label>
+      <div class="fg"><label>Loại</label>
         <select id="accTypeS" onchange="onAccTypeChange()">
-          <option value="bank">Ngan hang</option>
-          <option value="savings">Tiet kiem</option>
-          <option value="credit">The tin dung</option>
-          <option value="invest">Dau tu</option>
+          <option value="bank">Ngân hàng</option>
+          <option value="savings">Tiết kiệm</option>
+          <option value="credit">Thẻ tín dụng</option>
+          <option value="invest">Đầu tư</option>
           <option value="lend">Cho vay</option>
-          <option value="borrow">No vay</option>
+          <option value="borrow">Nợ vay</option>
         </select>
       </div>
-      <div class="fg"><label>Chu so huu</label>
+      <div class="fg"><label>Chủ sở hữu</label>
         <select id="accOwnerS">
           <option value="shared">Chung</option>
-          <option value="wife">Vo</option>
-          <option value="husband">Chong</option>
+          <option value="wife">Vợ</option>
+          <option value="husband">Chồng</option>
         </select>
       </div>
     </div>
-    <div class="fg"><label>So du / So tien</label><input type="number" id="accBal" placeholder="0" inputmode="numeric"></div>
+    <div class="fg"><label>Số dư / Số tiền</label><input type="number" id="accBal" placeholder="0" inputmode="numeric"></div>
     <div id="accExtraFields"></div>
-    <div class="fg"><label>Ghi chu</label><textarea id="accNote" placeholder="Ghi chu them..."></textarea></div>
-    <button class="btn" id="accSaveBtn" onclick="saveAcc()">Luu</button>
-    <button class="btn btn-del" id="accDelBtn" onclick="delAcc()" style="display:none">Xoa tai khoan</button>
+    <div class="fg"><label>Ghi chú</label><textarea id="accNote" placeholder="Ghi chú thêm..."></textarea></div>
+    <button class="btn" id="accSaveBtn" onclick="saveAcc()">Lưu</button>
+    <button class="btn btn-del" id="accDelBtn" onclick="delAcc()" style="display:none">Xoá tài khoản</button>
   </div>
 </div>
 
 <!-- MODAL: EDIT TX -->
 <div class="modal" id="txModal">
   <div class="modal-c">
-    <div class="modal-h"><h3>Sua giao dich</h3><button class="modal-x" onclick="closeTxModal()">&times;</button></div>
+    <div class="modal-h"><h3>Sửa giao dịch</h3><button class="modal-x" onclick="closeTxModal()">&times;</button></div>
     <div class="type-tog">
-      <button class="t-btn" id="eBtnExp" onclick="setETxType('expense')">Chi tieu</button>
-      <button class="t-btn" id="eBtnInc" onclick="setETxType('income')">Thu nhap</button>
+      <button class="t-btn" id="eBtnExp" onclick="setETxType('expense')">Chi tiêu</button>
+      <button class="t-btn" id="eBtnInc" onclick="setETxType('income')">Thu nhập</button>
     </div>
     <div class="form-row">
-      <div class="fg"><label>So tien</label><input type="number" id="eAmt" inputmode="numeric"></div>
-      <div class="fg"><label>Danh muc</label><select id="eCat"></select></div>
+      <div class="fg"><label>Số tiền</label><input type="number" id="eAmt" inputmode="numeric"></div>
+      <div class="fg"><label>Danh mục</label><select id="eCat"></select></div>
     </div>
     <div class="form-row">
-      <div class="fg"><label>Tai khoan</label><select id="eAcc"></select></div>
-      <div class="fg"><label>Nguoi</label><select id="ePerson"><option value="wife">Vo</option><option value="husband">Chong</option></select></div>
+      <div class="fg"><label>Tài khoản</label><select id="eAcc"></select></div>
+      <div class="fg"><label>Người</label><select id="ePerson"><option value="wife">Vợ</option><option value="husband">Chồng</option></select></div>
     </div>
-    <div class="fg"><label>Ngay</label><input type="date" id="eDate"></div>
-    <div class="fg"><label>Ghi chu</label><textarea id="eNote"></textarea></div>
-    <button class="btn" onclick="saveTx()">Luu thay doi</button>
-    <button class="btn btn-del" onclick="delTx()">Xoa giao dich</button>
+    <div class="fg"><label>Ngày</label><input type="date" id="eDate"></div>
+    <div class="fg"><label>Ghi chú</label><textarea id="eNote"></textarea></div>
+    <button class="btn" onclick="saveTx()">Lưu thay đổi</button>
+    <button class="btn btn-del" onclick="delTx()">Xoá giao dịch</button>
   </div>
 </div>
 
 <!-- MODAL: GOAL -->
 <div class="modal" id="goalModal">
   <div class="modal-c">
-    <div class="modal-h"><h3 id="goalModalTitle">Them muc tieu</h3><button class="modal-x" onclick="closeGoalModal()">&times;</button></div>
-    <div class="fg"><label>Ten muc tieu</label><input type="text" id="goalName" placeholder="Vi du: Mua xe"></div>
+    <div class="modal-h"><h3 id="goalModalTitle">Thêm mục tiêu</h3><button class="modal-x" onclick="closeGoalModal()">&times;</button></div>
+    <div class="fg"><label>Tên mục tiêu</label><input type="text" id="goalName" placeholder="Ví dụ: Mua xe"></div>
     <div class="form-row">
-      <div class="fg"><label>So tien can dat</label><input type="number" id="goalTarget" inputmode="numeric" placeholder="500000000"></div>
-      <div class="fg"><label>Da tiet kiem</label><input type="number" id="goalCurrent" inputmode="numeric" placeholder="0"></div>
+      <div class="fg"><label>Số tiền cần đạt</label><input type="number" id="goalTarget" inputmode="numeric" placeholder="500000000"></div>
+      <div class="fg"><label>Đã tiết kiệm</label><input type="number" id="goalCurrent" inputmode="numeric" placeholder="0"></div>
     </div>
-    <div class="fg"><label>Han chot</label><input type="date" id="goalDeadline"></div>
-    <button class="btn" onclick="saveGoal()">Luu</button>
-    <button class="btn btn-del" id="goalDelBtn" onclick="delGoal()" style="display:none">Xoa muc tieu</button>
+    <div class="fg"><label>Hạn chót</label><input type="date" id="goalDeadline"></div>
+    <button class="btn" onclick="saveGoal()">Lưu</button>
+    <button class="btn btn-del" id="goalDelBtn" onclick="delGoal()" style="display:none">Xoá mục tiêu</button>
   </div>
 </div>
 
@@ -414,10 +414,10 @@ const db = firebase.firestore();
 // ========== CONSTANTS ==========
 const EXP_CATS=['An uong','Di lai','Dien nuoc net','Nha o','Hoc phi','Y te','Giai tri','Mua sam','Bao hiem','Khac'];
 const INC_CATS=['Luong','Thuong','Kinh doanh','Dau tu','Khac'];
-const CAT_LBL={'An uong':'An uong','Di lai':'Di lai','Dien nuoc net':'Dien/Nuoc/Net','Nha o':'Nha o','Hoc phi':'Hoc phi','Y te':'Y te','Giai tri':'Giai tri','Mua sam':'Mua sam','Bao hiem':'Bao hiem','Khac':'Khac','Luong':'Luong','Thuong':'Thuong','Kinh doanh':'Kinh doanh','Dau tu':'Dau tu'};
-const ACC_TYPE_LBL={bank:'Ngan hang',savings:'Tiet kiem',credit:'The tin dung',invest:'Dau tu',lend:'Cho vay',borrow:'No vay'};
-const OWNER_LBL={shared:'Chung',wife:'Vo',husband:'Chong'};
-const MONTHS=['Thang 1','Thang 2','Thang 3','Thang 4','Thang 5','Thang 6','Thang 7','Thang 8','Thang 9','Thang 10','Thang 11','Thang 12'];
+const CAT_LBL={'An uong':'\u0102n u\u1ed1ng','Di lai':'\u0110i l\u1ea1i','Dien nuoc net':'\u0110i\u1ec7n/N\u01b0\u1edbc/Net','Nha o':'Nhà \u1edf','Hoc phi':'H\u1ecdc phí','Y te':'Y t\u1ebf','Giai tri':'Gi\u1ea3i trí','Mua sam':'Mua s\u1eafm','Bao hiem':'B\u1ea3o hi\u1ec3m','Khac':'Khác','Luong':'L\u01b0\u01a1ng','Thuong':'Th\u01b0\u1edfng','Kinh doanh':'Kinh doanh','Dau tu':'\u0110\u1ea7u t\u01b0'};
+const ACC_TYPE_LBL={bank:'Ngân hàng',savings:'Ti\u1ebft ki\u1ec7m',credit:'Th\u1ebb tín d\u1ee5ng',invest:'\u0110\u1ea7u t\u01b0',lend:'Cho vay',borrow:'N\u1ee3 vay'};
+const OWNER_LBL={shared:'Chung',wife:'V\u1ee3',husband:'Ch\u1ed3ng'};
+const MONTHS=['Tháng 1','Tháng 2','Tháng 3','Tháng 4','Tháng 5','Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'];
 
 // ========== STATE ==========
 let fc='',curDate=new Date(),txs=[],accs=[],budgets={},goals=[];
@@ -426,14 +426,14 @@ let txType='expense',eTxType='expense',editTxId=null,editAccId=null,editGoalId=n
 let unsubs=[];
 
 // ========== UTILS ==========
-const fmt=n=>{if(!n&&n!==0)return'0 d';return Math.round(n).toLocaleString('vi-VN')+' d'};
+const fmt=n=>{if(!n&&n!==0)return'0 \u0111';return Math.round(n).toLocaleString('vi-VN')+' \u0111'};
 const cl=c=>CAT_LBL[c]||c;
 const fmtDate=d=>{if(!d)return'';const[y,m,dd]=d.split('-');return dd+'/'+m+'/'+y};
 const getYM=()=>`${curDate.getFullYear()}-${String(curDate.getMonth()+1).padStart(2,'0')}`;
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
 
 // ========== AUTH ==========
-function login(){const c=document.getElementById('familyCode').value.trim().toLowerCase();if(!c){toast('Nhap ma gia dinh');return}if(c.length<3){toast('Ma can it nhat 3 ky tu');return}fc=c;localStorage.setItem('fc',c);document.getElementById('loginScreen').style.display='none';document.getElementById('appScreen').style.display='block';initApp()}
+function login(){const c=document.getElementById('familyCode').value.trim().toLowerCase();if(!c){toast('Nh\u1eadp mã gia \u0111ình');return}if(c.length<3){toast('Mã c\u1ea7n ít nh\u1ea5t 3 ký t\u1ef1');return}fc=c;localStorage.setItem('fc',c);document.getElementById('loginScreen').style.display='none';document.getElementById('appScreen').style.display='block';initApp()}
 function logout(){fc='';localStorage.removeItem('fc');document.getElementById('loginScreen').style.display='flex';document.getElementById('appScreen').style.display='none';unsubs.forEach(u=>u());unsubs=[]}
 (function(){const s=localStorage.getItem('fc');if(s){fc=s;document.getElementById('loginScreen').style.display='none';document.getElementById('appScreen').style.display='block';initApp()}})();
 document.getElementById('familyCode').addEventListener('keypress',e=>{if(e.key==='Enter')login()});
@@ -448,14 +448,14 @@ function setDefaultDate(){document.getElementById('txDate').value=new Date().toI
 // ========== POPULATE ==========
 function populateCats(){fillSel('txCat','expense');fillSel('budCat','expense')}
 function fillSel(id,type){const s=document.getElementById(id);const cats=type==='income'?INC_CATS:EXP_CATS;s.innerHTML=cats.map(c=>`<option value="${c}">${cl(c)}</option>`).join('')}
-function fillAccSel(id){const s=document.getElementById(id);s.innerHTML='<option value="">-- Khong chon --</option>'+accs.map(a=>`<option value="${a.id}">${a.name}</option>`).join('')}
+function fillAccSel(id){const s=document.getElementById(id);s.innerHTML='<option value="">-- Không ch\u1ecdn --</option>'+accs.map(a=>`<option value="${a.id}">${a.name}</option>`).join('')}
 
 // ========== LISTENERS ==========
 function listen(){
   unsubs.forEach(u=>u());unsubs=[];
   const ref=db.collection('families').doc(fc);
   unsubs.push(ref.collection('accounts').onSnapshot(snap=>{accs=[];snap.forEach(d=>accs.push({id:d.id,...d.data()}));fillAccSel('txAcc');fillAccSel('eAcc');renderAll()}));
-  unsubs.push(ref.collection('transactions').orderBy('date','desc').onSnapshot(snap=>{txs=[];snap.forEach(d=>txs.push({id:d.id,...d.data()}));renderAll()},err=>{console.error(err);toast('Loi ket noi Firebase')}));
+  unsubs.push(ref.collection('transactions').orderBy('date','desc').onSnapshot(snap=>{txs=[];snap.forEach(d=>txs.push({id:d.id,...d.data()}));renderAll()},err=>{console.error(err);toast('L\u1ed7i k\u1ebft n\u1ed1i Firebase')}));
   unsubs.push(ref.collection('budgets').onSnapshot(snap=>{budgets={};snap.forEach(d=>{budgets[d.id]=d.data()});renderBudget()}));
   unsubs.push(ref.collection('goals').onSnapshot(snap=>{goals=[];snap.forEach(d=>goals.push({id:d.id,...d.data()}));renderGoals()}));
 }
@@ -481,12 +481,12 @@ async function addTx(){
   const note=document.getElementById('txNote').value.trim();
   const accId=document.getElementById('txAcc').value;
   const person=document.getElementById('txPerson').value;
-  if(!amt||amt<=0){toast('Nhap so tien hop le');return}
-  if(!date){toast('Chon ngay');return}
+  if(!amt||amt<=0){toast('Nh\u1eadp s\u1ed1 ti\u1ec1n h\u1ee3p l\u1ec7');return}
+  if(!date){toast('Ch\u1ecdn ngày');return}
   try{
     await db.collection('families').doc(fc).collection('transactions').add({type:txType,amount:amt,category:cat,date,note,accountId:accId,person,createdAt:firebase.firestore.FieldValue.serverTimestamp()});
     document.getElementById('txAmt').value='';document.getElementById('txNote').value='';
-    toast('Da them giao dich!');
+    toast('\u0110ã thêm giao d\u1ecbch!');
   }catch(e){toast('Loi: '+e.message)}
 }
 
@@ -505,15 +505,15 @@ function openTxEdit(id){
 function closeTxModal(){document.getElementById('txModal').classList.remove('show');editTxId=null}
 async function saveTx(){
   if(!editTxId)return;const amt=parseInt(document.getElementById('eAmt').value);
-  if(!amt||amt<=0){toast('So tien khong hop le');return}
-  try{await db.collection('families').doc(fc).collection('transactions').doc(editTxId).update({type:eTxType,amount:amt,category:document.getElementById('eCat').value,date:document.getElementById('eDate').value,note:document.getElementById('eNote').value.trim(),accountId:document.getElementById('eAcc').value,person:document.getElementById('ePerson').value});closeTxModal();toast('Da cap nhat!')}catch(e){toast('Loi: '+e.message)}
+  if(!amt||amt<=0){toast('S\u1ed1 ti\u1ec1n không h\u1ee3p l\u1ec7');return}
+  try{await db.collection('families').doc(fc).collection('transactions').doc(editTxId).update({type:eTxType,amount:amt,category:document.getElementById('eCat').value,date:document.getElementById('eDate').value,note:document.getElementById('eNote').value.trim(),accountId:document.getElementById('eAcc').value,person:document.getElementById('ePerson').value});closeTxModal();toast('\u0110ã c\u1eadp nh\u1eadt!')}catch(e){toast('Loi: '+e.message)}
 }
-async function delTx(){if(!editTxId||!confirm('Ban co chac muon xoa?'))return;try{await db.collection('families').doc(fc).collection('transactions').doc(editTxId).delete();closeTxModal();toast('Da xoa!')}catch(e){toast('Loi: '+e.message)}}
+async function delTx(){if(!editTxId||!confirm('B\u1ea1n có ch\u1eafc mu\u1ed1n xoá?'))return;try{await db.collection('families').doc(fc).collection('transactions').doc(editTxId).delete();closeTxModal();toast('\u0110ã xoá!')}catch(e){toast('Loi: '+e.message)}}
 
 // ========== ACCOUNTS ==========
 function openAccModal(id){
   editAccId=id||null;
-  document.getElementById('accModalTitle').textContent=id?'Sua tai khoan':'Them tai khoan';
+  document.getElementById('accModalTitle').textContent=id?'S\u1eeda tài kho\u1ea3n':'Thêm tài kho\u1ea3n';
   document.getElementById('accDelBtn').style.display=id?'block':'none';
   if(id){const a=accs.find(x=>x.id===id);if(!a)return;document.getElementById('accName').value=a.name;document.getElementById('accTypeS').value=a.type;document.getElementById('accOwnerS').value=a.owner;document.getElementById('accBal').value=a.balance;document.getElementById('accNote').value=a.note||'';onAccTypeChange();if(a.creditLimit)document.getElementById('accCreditLimit')&&(document.getElementById('accCreditLimit').value=a.creditLimit);if(a.dueDate)document.getElementById('accDueDate')&&(document.getElementById('accDueDate').value=a.dueDate);if(a.borrower)document.getElementById('accBorrower')&&(document.getElementById('accBorrower').value=a.borrower);if(a.lender)document.getElementById('accLender')&&(document.getElementById('accLender').value=a.lender);if(a.expectedDate)document.getElementById('accExpectedDate')&&(document.getElementById('accExpectedDate').value=a.expectedDate);if(a.investType)document.getElementById('accInvestType')&&(document.getElementById('accInvestType').value=a.investType)}
   else{document.getElementById('accName').value='';document.getElementById('accTypeS').value='bank';document.getElementById('accOwnerS').value='shared';document.getElementById('accBal').value='';document.getElementById('accNote').value='';onAccTypeChange()}
@@ -524,10 +524,10 @@ function onAccTypeChange(){
   const t=document.getElementById('accTypeS').value;
   const el=document.getElementById('accExtraFields');
   let h='';
-  if(t==='credit')h='<div class="form-row"><div class="fg"><label>Han muc</label><input type="number" id="accCreditLimit" inputmode="numeric"></div><div class="fg"><label>Ngay sao ke</label><input type="number" id="accDueDate" placeholder="25" inputmode="numeric"></div></div>';
-  else if(t==='lend')h='<div class="form-row"><div class="fg"><label>Nguoi vay</label><input type="text" id="accBorrower"></div><div class="fg"><label>Du kien tra</label><input type="date" id="accExpectedDate"></div></div>';
-  else if(t==='borrow')h='<div class="form-row"><div class="fg"><label>Nguoi cho vay</label><input type="text" id="accLender"></div><div class="fg"><label>Ke hoach tra</label><input type="date" id="accExpectedDate"></div></div>';
-  else if(t==='invest')h='<div class="fg"><label>Loai dau tu</label><input type="text" id="accInvestType" placeholder="Chung khoan, vang, BDS..."></div>';
+  if(t==='credit')h='<div class="form-row"><div class="fg"><label>H\u1ea1n m\u1ee9c</label><input type="number" id="accCreditLimit" inputmode="numeric"></div><div class="fg"><label>Ngày sao kê</label><input type="number" id="accDueDate" placeholder="25" inputmode="numeric"></div></div>';
+  else if(t==='lend')h='<div class="form-row"><div class="fg"><label>Ng\u01b0\u1eddi vay</label><input type="text" id="accBorrower"></div><div class="fg"><label>D\u1ef1 ki\u1ebfn tr\u1ea3</label><input type="date" id="accExpectedDate"></div></div>';
+  else if(t==='borrow')h='<div class="form-row"><div class="fg"><label>Ng\u01b0\u1eddi cho vay</label><input type="text" id="accLender"></div><div class="fg"><label>K\u1ebf ho\u1ea1ch tr\u1ea3</label><input type="date" id="accExpectedDate"></div></div>';
+  else if(t==='invest')h='<div class="fg"><label>Lo\u1ea1i \u0111\u1ea7u t\u01b0</label><input type="text" id="accInvestType" placeholder="Ch\u1ee9ng khoán, vàng, B\u0110S..."></div>';
   el.innerHTML=h;
 }
 async function saveAcc(){
@@ -536,7 +536,7 @@ async function saveAcc(){
   const owner=document.getElementById('accOwnerS').value;
   const balance=parseInt(document.getElementById('accBal').value)||0;
   const note=document.getElementById('accNote').value.trim();
-  if(!name){toast('Nhap ten tai khoan');return}
+  if(!name){toast('Nh\u1eadp tên tài kho\u1ea3n');return}
   const data={name,type,owner,balance,note};
   if(type==='credit'){data.creditLimit=parseInt(document.getElementById('accCreditLimit')?.value)||0;data.dueDate=parseInt(document.getElementById('accDueDate')?.value)||0}
   if(type==='lend'){data.borrower=document.getElementById('accBorrower')?.value||'';data.expectedDate=document.getElementById('accExpectedDate')?.value||''}
@@ -548,20 +548,20 @@ async function saveAcc(){
     closeAccModal();toast(editAccId?'Da cap nhat!':'Da them!');
   }catch(e){toast('Loi: '+e.message)}
 }
-async function delAcc(){if(!editAccId||!confirm('Xoa tai khoan nay?'))return;try{await db.collection('families').doc(fc).collection('accounts').doc(editAccId).delete();closeAccModal();toast('Da xoa!')}catch(e){toast('Loi: '+e.message)}}
+async function delAcc(){if(!editAccId||!confirm('Xoá tài kho\u1ea3n này?'))return;try{await db.collection('families').doc(fc).collection('accounts').doc(editAccId).delete();closeAccModal();toast('\u0110ã xoá!')}catch(e){toast('Loi: '+e.message)}}
 
 // ========== BUDGET ==========
 async function setBudget(){
   const cat=document.getElementById('budCat').value;
   const amt=parseInt(document.getElementById('budAmt').value);
-  if(!amt||amt<=0){toast('Nhap so tien hop le');return}
-  try{await db.collection('families').doc(fc).collection('budgets').doc(getYM()).set({[cat]:amt},{merge:true});document.getElementById('budAmt').value='';toast('Da luu ngan sach!')}catch(e){toast('Loi: '+e.message)}
+  if(!amt||amt<=0){toast('Nh\u1eadp s\u1ed1 ti\u1ec1n h\u1ee3p l\u1ec7');return}
+  try{await db.collection('families').doc(fc).collection('budgets').doc(getYM()).set({[cat]:amt},{merge:true});document.getElementById('budAmt').value='';toast('\u0110ã l\u01b0u ngân sách!')}catch(e){toast('Loi: '+e.message)}
 }
 
 // ========== GOALS ==========
 function openGoalModal(id){
   editGoalId=id||null;
-  document.getElementById('goalModalTitle').textContent=id?'Sua muc tieu':'Them muc tieu';
+  document.getElementById('goalModalTitle').textContent=id?'S\u1eeda m\u1ee5c tiêu':'Thêm m\u1ee5c tiêu';
   document.getElementById('goalDelBtn').style.display=id?'block':'none';
   if(id){const g=goals.find(x=>x.id===id);if(!g)return;document.getElementById('goalName').value=g.name;document.getElementById('goalTarget').value=g.target;document.getElementById('goalCurrent').value=g.current||0;document.getElementById('goalDeadline').value=g.deadline||''}
   else{document.getElementById('goalName').value='';document.getElementById('goalTarget').value='';document.getElementById('goalCurrent').value='';document.getElementById('goalDeadline').value=''}
@@ -573,7 +573,7 @@ async function saveGoal(){
   const target=parseInt(document.getElementById('goalTarget').value)||0;
   const current=parseInt(document.getElementById('goalCurrent').value)||0;
   const deadline=document.getElementById('goalDeadline').value;
-  if(!name||!target){toast('Nhap ten va so tien');return}
+  if(!name||!target){toast('Nh\u1eadp tên và s\u1ed1 ti\u1ec1n');return}
   const data={name,target,current,deadline};
   try{
     if(editGoalId)await db.collection('families').doc(fc).collection('goals').doc(editGoalId).update(data);
@@ -581,7 +581,7 @@ async function saveGoal(){
     closeGoalModal();toast(editGoalId?'Da cap nhat!':'Da them!');
   }catch(e){toast('Loi: '+e.message)}
 }
-async function delGoal(){if(!editGoalId||!confirm('Xoa muc tieu nay?'))return;try{await db.collection('families').doc(fc).collection('goals').doc(editGoalId).delete();closeGoalModal();toast('Da xoa!')}catch(e){toast('Loi: '+e.message)}}
+async function delGoal(){if(!editGoalId||!confirm('Xoá m\u1ee5c tiêu này?'))return;try{await db.collection('families').doc(fc).collection('goals').doc(editGoalId).delete();closeGoalModal();toast('\u0110ã xoá!')}catch(e){toast('Loi: '+e.message)}}
 
 // ========== RENDER ALL ==========
 function renderAll(){renderDash();renderAccList();renderHistory();renderBudget();renderGoals();renderStats()}
@@ -608,12 +608,12 @@ function renderDash(){
   const borrowTotal=fltAccs.filter(a=>a.type==='borrow').reduce((s,a)=>s+Math.abs(a.balance||0),0);
 
   document.getElementById('sumGrid').innerHTML=`
-    <div class="sum-c blue"><div class="lb">Ngan hang</div><div class="vl">${fmt(bankTotal)}</div></div>
-    <div class="sum-c purple"><div class="lb">Dau tu</div><div class="vl">${fmt(investTotal)}</div></div>
+    <div class="sum-c blue"><div class="lb">Ngân hàng</div><div class="vl">${fmt(bankTotal)}</div></div>
+    <div class="sum-c purple"><div class="lb">\u0110\u1ea7u t\u01b0</div><div class="vl">${fmt(investTotal)}</div></div>
     <div class="sum-c green"><div class="lb">Cho vay</div><div class="vl">${fmt(lendTotal)}</div></div>
-    <div class="sum-c red"><div class="lb">No the</div><div class="vl">${fmt(creditTotal)}</div></div>
-    <div class="sum-c red"><div class="lb">No vay</div><div class="vl">${fmt(borrowTotal)}</div></div>
-    <div class="sum-c ${net>=0?'green':'red'}"><div class="lb">Rong</div><div class="vl">${fmt(net)}</div></div>`;
+    <div class="sum-c red"><div class="lb">N\u1ee3 th\u1ebb</div><div class="vl">${fmt(creditTotal)}</div></div>
+    <div class="sum-c red"><div class="lb">N\u1ee3 vay</div><div class="vl">${fmt(borrowTotal)}</div></div>
+    <div class="sum-c ${net>=0?'green':'red'}"><div class="lb">Ròng</div><div class="vl">${fmt(net)}</div></div>`;
 
   // Monthly income/expense
   const mTx=getMonthTx();
@@ -625,7 +625,7 @@ function renderDash(){
   // Recent
   const recent=mTx.slice(0,5);
   const c=document.getElementById('recentTx');
-  if(!recent.length){c.innerHTML='<div class="empty"><div class="ei">&#128221;</div><p>Chua co giao dich nao thang nay</p></div>';return}
+  if(!recent.length){c.innerHTML='<div class="empty"><div class="ei">&#128221;</div><p>Ch\u01b0a có giao d\u1ecbch nào tháng này</p></div>';return}
   c.innerHTML=recent.map(t=>`<div class="tx-item" onclick="openTxEdit('${t.id}')"><div class="tx-left"><div class="tx-cat">${cl(t.category)}</div>${t.note?`<div class="tx-note">${t.note}</div>`:''}
     <div class="tx-date">${fmtDate(t.date)} · ${OWNER_LBL[t.person]||''}</div></div><div class="tx-amt ${t.type}">${t.type==='income'?'+':'-'}${fmt(t.amount)}</div></div>`).join('');
 }
@@ -639,7 +639,7 @@ function renderAccList(){
     else list=list.filter(a=>a.type===accTypeFlt);
   }
   const c=document.getElementById('accList');
-  if(!list.length){c.innerHTML='<div class="empty"><div class="ei">&#127974;</div><p>Chua co tai khoan nao</p></div>';return}
+  if(!list.length){c.innerHTML='<div class="empty"><div class="ei">&#127974;</div><p>Ch\u01b0a có tài kho\u1ea3n nào</p></div>';return}
   c.innerHTML=list.map(a=>{
     const isDebt=['credit','borrow'].includes(a.type);
     const cls=isDebt?'neg':'pos';
@@ -658,7 +658,7 @@ function renderHistory(){
   let list=getMonthTx();
   if(txFlt!=='all')list=list.filter(t=>t.type===txFlt);
   const c=document.getElementById('txList');
-  if(!list.length){c.innerHTML='<div class="empty"><div class="ei">&#128196;</div><p>Khong co giao dich nao</p></div>';return}
+  if(!list.length){c.innerHTML='<div class="empty"><div class="ei">&#128196;</div><p>Không có giao d\u1ecbch nào</p></div>';return}
   c.innerHTML=list.map(t=>{
     const accName=accs.find(a=>a.id===t.accountId)?.name||'';
     return`<div class="tx-item" onclick="openTxEdit('${t.id}')"><div class="tx-left"><div class="tx-cat">${cl(t.category)}</div>${t.note?`<div class="tx-note">${t.note}</div>`:''}
@@ -671,7 +671,7 @@ function renderBudget(){
   const ym=getYM();const mb=budgets[ym]||{};const mTx=getMonthTx();
   const c=document.getElementById('budList');
   const cats=Object.keys(mb);
-  if(!cats.length){c.innerHTML='<div class="empty"><p>Chua dat ngan sach nao</p></div>';return}
+  if(!cats.length){c.innerHTML='<div class="empty"><p>Ch\u01b0a \u0111\u1eb7t ngân sách nào</p></div>';return}
   c.innerHTML=cats.map(cat=>{
     const bud=mb[cat];const spent=mTx.filter(t=>t.type==='expense'&&t.category===cat).reduce((s,t)=>s+t.amount,0);
     const pct=Math.min((spent/bud)*100,100);
@@ -683,7 +683,7 @@ function renderBudget(){
 // ========== RENDER GOALS ==========
 function renderGoals(){
   const c=document.getElementById('goalList');
-  if(!goals.length){c.innerHTML='<div class="empty"><p>Chua co muc tieu nao</p></div>';return}
+  if(!goals.length){c.innerHTML='<div class="empty"><p>Ch\u01b0a có m\u1ee5c tiêu nào</p></div>';return}
   c.innerHTML=goals.map(g=>{
     const pct=g.target>0?Math.min((g.current/g.target)*100,100):0;
     const color=pct>=100?'var(--ok)':pct>50?'var(--pri)':'var(--warn)';
@@ -702,7 +702,7 @@ function renderStats(){
   const catTotals={};expTx.forEach(t=>{catTotals[t.category]=(catTotals[t.category]||0)+t.amount});
   const sorted=Object.entries(catTotals).sort((a,b)=>b[1]-a[1]);
   const cc=document.getElementById('catStats');
-  if(!sorted.length)cc.innerHTML='<div class="empty"><p>Chua co du lieu chi tieu</p></div>';
+  if(!sorted.length)cc.innerHTML='<div class="empty"><p>Ch\u01b0a có d\u1eef li\u1ec7u chi tiêu</p></div>';
   else cc.innerHTML=sorted.map(([cat,amt])=>{const pct=totalExp>0?(amt/totalExp*100):0;return`<div class="stat-cat-item"><span style="font-size:12px;min-width:70px">${cl(cat)}</span><div class="stat-bar"><div class="stat-bar-fill" style="width:${pct}%"></div></div><span style="font-size:12px;font-weight:600;min-width:80px;text-align:right">${fmt(amt)}</span></div>`}).join('');
 
   // Year summary
