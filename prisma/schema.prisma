@@ -1,0 +1,200 @@
+// This is your Prisma schema file
+// Learn more at: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── NextAuth Models ───────────────────────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+  transactions  Transaction[]
+  budgets       Budget[]
+  savingsGoals  SavingsGoal[]
+  walletMembers WalletMember[]
+  categories    Category[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ─── Finance Models ────────────────────────────────────────────────────────────
+
+model Category {
+  id           String          @id @default(cuid())
+  name         String
+  icon         String          @default("tag")
+  color        String          @default("#6366f1")
+  type         CategoryType
+  userId       String?
+  isDefault    Boolean         @default(false)
+  createdAt    DateTime        @default(now())
+
+  user         User?           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+  budgets      Budget[]
+
+  @@map("categories")
+}
+
+enum CategoryType {
+  INCOME
+  EXPENSE
+}
+
+model Transaction {
+  id          String          @id @default(cuid())
+  amount      Decimal         @db.Decimal(12, 2)
+  type        TransactionType
+  description String?
+  date        DateTime
+  notes       String?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  userId      String
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  categoryId  String?
+  category    Category?       @relation(fields: [categoryId], references: [id])
+
+  walletId    String?
+  wallet      Wallet?         @relation(fields: [walletId], references: [id])
+
+  @@map("transactions")
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+model Budget {
+  id         String   @id @default(cuid())
+  amount     Decimal  @db.Decimal(12, 2)
+  spent      Decimal  @default(0) @db.Decimal(12, 2)
+  month      Int
+  year       Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, categoryId, month, year])
+  @@map("budgets")
+}
+
+model SavingsGoal {
+  id            String   @id @default(cuid())
+  name          String
+  targetAmount  Decimal  @db.Decimal(12, 2)
+  currentAmount Decimal  @default(0) @db.Decimal(12, 2)
+  targetDate    DateTime?
+  icon          String   @default("piggy-bank")
+  color         String   @default("#10b981")
+  description   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("savings_goals")
+}
+
+model Wallet {
+  id           String         @id @default(cuid())
+  name         String
+  description  String?
+  balance      Decimal        @default(0) @db.Decimal(12, 2)
+  currency     String         @default("USD")
+  icon         String         @default("wallet")
+  color        String         @default("#6366f1")
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  members      WalletMember[]
+  transactions Transaction[]
+
+  @@map("wallets")
+}
+
+model WalletMember {
+  id       String     @id @default(cuid())
+  role     WalletRole @default(MEMBER)
+  joinedAt DateTime   @default(now())
+
+  userId   String
+  user     User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  walletId String
+  wallet   Wallet     @relation(fields: [walletId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, walletId])
+  @@map("wallet_members")
+}
+
+enum WalletRole {
+  OWNER
+  ADMIN
+  MEMBER
+}
